@@ -7,12 +7,13 @@ function queryAll(selector){
     return document.querySelectorAll(selector)
 }
 
-const searchDiv = query('.search-button')
-const searchButton = document.createElement('search-button')
+const searchDiv = query('#search-button')
+const searchButton = document.createElement('div')
 searchButton.innerText = 'Search Button'
 searchButton.addEventListener('click', function () {
     updateArtist(input)})
-searchDiv.appendChild(searchButton) 
+searchDiv.appendChild(searchButton)
+searchButton.classList.add('search-button') 
 
 
 function getArtist(input){
@@ -40,17 +41,30 @@ function updateArtist (name) {
         let idx
         for (idx = 0; idx < searchResult.results.length; idx++){
             const trackItem = document.createElement('div')
-            // const trackUrl = searchResult.results[idx].artworkUrl100
-            console.log(trackItem)
+            const artworkTag = document.createElement('div')
+            const audioDiv = query('#audioplayer')
+            const audioBar = document.createElement ('div')
+            const audio = searchResult.results[idx].previewUrl
+            console.log(audio)
+            const artworkUrl = searchResult.results[idx].artworkUrl100
+            audioBar.innerHTML = `<audio
+                            controls
+                            src="${audio}">
+                                Your browser does not support the
+                                <code>audio</code> element.
+                        </audio>`
             trackItem.innerText = searchResult.results[idx].trackName
-            trackDiv.appendChild(trackItem)
-            // trackUrlHolder.innerHTML = `<img class="artwork" src="${trackUrl}>`
+            artworkTag.innerHTML = `<img src="${artworkUrl}">`
+            trackDiv.appendChild(artworkTag)
+            artworkTag.appendChild(trackItem)
+            artworkTag.appendChild(audioBar)
+            artworkTag.classList.add('artwork')
             trackItem.classList.add('track')
-            // trackDiv.replaceChild(trackDiv, trackDiv)
+            audioBar.classList.add('audio-player')
         }
     })
 }
-
+    
 
 document.addEventListener('DOMContentLoaded', function(){
     query('#name').addEventListener('change', function(event){

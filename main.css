@@ -1,20 +1,29 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    background-color: antiquewhite;
+    background-color: #deefe0;
 }
 
 #name{
+    margin: 1rem;
     width: 500px;
     height: 30px;
     font-size: 30px;
 }
 
-search-button{
-    margin: 0 auto;
+#searchbar {
+    display: flex;
+    justify-content: center;
+}
+#search-button {
+    margin: 0.4rem;
+}
+.search-button{
+    margin: 1rem;
     border: 1px solid black;
-    width: 100px;
-    height: 20px;
+    background-color: rgb(242, 227, 227);
+    width: 150px;
+    font-size: 20px;
 }
 
 #artist{
@@ -24,22 +33,27 @@ search-button{
 #track{
     margin: 0 auto;
     width: 100%;
-    max-width: 900px;
     height: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+.artwork{
+    border: 1px solid black;
+    margin: 1rem;
+    display: block;
+    height: auto;
+    width: 300px;
+}
+
+.artwork img{
+    margin-top: 1rem;   
+    width: 150px;
+    height: auto;
+}
 
 .track{  
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    border: 1px solid red;
-    width: 200px;
-    height: 200px;
-    color: white;
-    background-color:darkslateblue;
+    color: darkred;
     text-align: center;
     padding: auto;
     
