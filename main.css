@@ -1,5 +1,7 @@
+
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
     text-align: center;
     background-color: #deefe0;
 }
@@ -14,6 +16,7 @@ body {
 #searchbar {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 #search-button {
     margin: 0.4rem;
@@ -44,6 +47,7 @@ body {
     display: block;
     height: auto;
     width: 300px;
+    border-radius: 35px 35px 35px 35px;
     animation: pulse 2.5s infinite;
 }
 
@@ -52,7 +56,7 @@ body {
     background-color: rgb(172, 203, 235);
   }
   50% {
-    background-color: rgb(150, 142, 142);
+    background-color: rgb(222,239,224);
   }
   100% {
     background-color: rgb(172, 203, 235);
@@ -61,8 +65,6 @@ body {
 
 .artwork img{
     margin-top: 1rem;   
-    width: 150px;
-    height: auto;
 }
 .track{  
     color: darkred;
@@ -70,11 +72,4 @@ body {
     padding: auto;
     
 }
-audio {
-    color: green;
-    display: block;
-}
 
-control{
-    background-color: rgb(66, 194, 194);
-}

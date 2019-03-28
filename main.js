@@ -7,14 +7,17 @@ function queryAll(selector){
     return document.querySelectorAll(selector)
 }
 
-const searchDiv = query('#search-button')
-const searchButton = document.createElement('div')
-searchButton.innerText = 'Search Button'
-searchButton.addEventListener('click', function () {
-    updateArtist(input)})
-searchDiv.appendChild(searchButton)
-searchButton.classList.add('search-button') 
+// const searchDiv = query('#search-button')
+// const searchButton = document.createElement('button')
+// searchButton.innerText = 'Search '
+// searchDiv.appendChild(searchButton)
+// searchButton.classList.add('search-button') 
 
+function searchArtist(input){
+    // searchButton.addEventListener('click', function (event) {
+        updateArtist(input)
+}
+    
 
 function getArtist(input){
     encodeURIComponent(input)
@@ -62,14 +65,13 @@ function updateArtist (name) {
             artworkTag.classList.add('artwork')
             trackItem.classList.add('track')
             audioBar.classList.add('audio-player')
+
         }
     })
 }
-    
 
 document.addEventListener('DOMContentLoaded', function(){
-    query('#name').addEventListener('change', function(event){
-        console.log(event.target.value)
-        updateArtist(event.target.value)
+    query('#search-button').addEventListener('click', function(event){
+        searchArtist(query("#name").value)
     })
 })
