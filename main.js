@@ -42,22 +42,23 @@ function updateArtist (name) {
         for (idx = 0; idx < searchResult.results.length; idx++){
             const trackItem = document.createElement('div')
             const artworkTag = document.createElement('div')
-            const audioDiv = query('#audioplayer')
+            // const audioDiv = query('#audioplayer')
             const audioBar = document.createElement ('div')
             const audio = searchResult.results[idx].previewUrl
-            console.log(audio)
             const artworkUrl = searchResult.results[idx].artworkUrl100
             audioBar.innerHTML = `<audio
-                            controls
-                            src="${audio}">
-                                Your browser does not support the
-                                <code>audio</code> element.
-                        </audio>`
+                                    controls="controls"
+                                    src="${audio}">
+                                        Your browser does not support the
+                                        <code>audio</code> element.
+                                </audio>`
             trackItem.innerText = searchResult.results[idx].trackName
             artworkTag.innerHTML = `<img src="${artworkUrl}">`
+            // adding these elements as children **parent.appendchild(child)**
             trackDiv.appendChild(artworkTag)
             artworkTag.appendChild(trackItem)
             artworkTag.appendChild(audioBar)
+            // adding classes to these elements
             artworkTag.classList.add('artwork')
             trackItem.classList.add('track')
             audioBar.classList.add('audio-player')

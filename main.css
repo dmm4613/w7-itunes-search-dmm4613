@@ -26,6 +26,7 @@ body {
     font-size: 20px;
 }
 
+
 #artist{
     font-size: 4rem; 
     text-transform: capitalize;
@@ -39,11 +40,23 @@ body {
     justify-content: space-evenly;
 }
 .artwork{
-    border: 1px solid black;
     margin: 1rem;
     display: block;
     height: auto;
     width: 300px;
+    animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: rgb(172, 203, 235);
+  }
+  50% {
+    background-color: rgb(150, 142, 142);
+  }
+  100% {
+    background-color: rgb(172, 203, 235);
+  }
 }
 
 .artwork img{
@@ -51,10 +64,17 @@ body {
     width: 150px;
     height: auto;
 }
-
 .track{  
     color: darkred;
     text-align: center;
     padding: auto;
     
+}
+audio {
+    color: green;
+    display: block;
+}
+
+control{
+    background-color: rgb(66, 194, 194);
 }
