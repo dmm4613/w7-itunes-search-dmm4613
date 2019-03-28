@@ -1,0 +1,39 @@
+body {
+    font-family: fantasy;
+    text-align: center;
+}
+
+#input{
+    width: 500px;
+    height: 30px;
+    font-size: 30px;
+}
+
+search-button{
+    margin: 0 auto;
+    border: 1px solid black;
+    width: 100px;
+    height: 20px;
+}
+
+#track{
+    margin: 0 auto;
+    border: 1px solid black; 
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+track{
+    border: 1px solid red;
+    width: 200px;
+    height: 200px;
+    color: white;
+    background-color:lightskyblue;
+    text-align: center;
+    padding: auto;
+    font-size-adjust: inherit;
+}
