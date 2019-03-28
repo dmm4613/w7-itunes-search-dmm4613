@@ -16,6 +16,7 @@ searchDiv.appendChild(searchButton)
 
 
 function getArtist(input){
+    encodeURIComponent(input)
     let promise = fetch(`https://itunes-api-proxy.glitch.me/search?term=${input}`)
     .then(function (response) {
         if (!response.ok) {
