@@ -12,11 +12,11 @@ const searchButton = document.createElement('search-button')
 searchButton.innerText = 'Search Button'
 searchButton.addEventListener('click', function () {
     updateArtist(input)})
-searchDiv.appendChild(searchButton)
+searchDiv.appendChild(searchButton) 
 
 
 function getArtist(input){
-    const promise = fetch(`https://itunes-api-proxy.glitch.me/search?term=${input}`)
+    let promise = fetch(`https://itunes-api-proxy.glitch.me/search?term=${input}`)
     .then(function (response) {
         if (!response.ok) {
         throw Error(response.statusText)
@@ -26,29 +26,34 @@ function getArtist(input){
     return promise
 }
 
-function updateArtist (input) {
-    getArtist (input)
+function updateArtist (name) {
+    getArtist (name)
     .then(function (searchResult){
         console.log(searchResult)
-        console.log(searchResult.results.length)
-        const artist = searchResult.results[0].artistName
-        query('#artist').innerText = artist
         const trackDiv = query('#track')
-        let trackUrlHolder = query("#artwork-holder")
+        // const trackUrlHolder = query("#artwork-holder")
+        const artist = name
+        query('#artist').innerText = artist
+        // below will reset the trackDiv each time this is run so that way it will refresh the list.
+        trackDiv.innerHTML = ''
         let idx
         for (idx = 0; idx < searchResult.results.length; idx++){
-            let trackItem = document.createElement('track')
-            let trackUrl = searchResult.results[idx].artworkUrl100
+            const trackItem = document.createElement('div')
+            // const trackUrl = searchResult.results[idx].artworkUrl100
             console.log(trackItem)
             trackItem.innerText = searchResult.results[idx].trackName
             trackDiv.appendChild(trackItem)
-            trackUrlHolder.innerHTML = `<img class="artwork" src="${trackUrl}>`
+            // trackUrlHolder.innerHTML = `<img class="artwork" src="${trackUrl}>`
+            trackItem.classList.add('track')
+            // trackDiv.replaceChild(trackDiv, trackDiv)
         }
     })
 }
 
+
 document.addEventListener('DOMContentLoaded', function(){
-    query('#input').addEventListener('change', function(event){
+    query('#name').addEventListener('change', function(event){
+        console.log(event.target.value)
         updateArtist(event.target.value)
     })
 })
