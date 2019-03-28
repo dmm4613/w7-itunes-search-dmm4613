@@ -7,11 +7,6 @@ function queryAll(selector){
     return document.querySelectorAll(selector)
 }
 
-// const searchDiv = query('#search-button')
-// const searchButton = document.createElement('button')
-// searchButton.innerText = 'Search '
-// searchDiv.appendChild(searchButton)
-// searchButton.classList.add('search-button') 
 
 function searchArtist(input){
     // searchButton.addEventListener('click', function (event) {
@@ -71,7 +66,12 @@ function updateArtist (name) {
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-    query('#search-button').addEventListener('click', function(event){
-        searchArtist(query("#name").value)
+    query('#search-form').addEventListener('submit', function(event){
+        const artistName = query('#name')
+        // don't try to submit this form. Do what I ask instead.
+        event.preventDefault()
+        searchArtist(artistName.value)
+        artistName.value = ''
+
     })
 })
