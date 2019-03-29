@@ -37,9 +37,10 @@ function updateArtist (name) {
         trackDiv.innerHTML = ''
         let idx
         for (idx = 0; idx < searchResult.results.length; idx++){
+            //creating two new divs for each track element
             const trackItem = document.createElement('div')
             const artworkTag = document.createElement('div')
-            const audioBar = document.createElement ('div')
+            // settings values from the json to these variables
             const audioUrl = searchResult.results[idx].previewUrl
             const artworkUrl = searchResult.results[idx].artworkUrl100
             const trackName = searchResult.results[idx].trackName
@@ -48,7 +49,6 @@ function updateArtist (name) {
             // adding these elements as children **parent.appendchild(child)**
             trackDiv.appendChild(artworkTag)
             artworkTag.appendChild(trackItem)
-            artworkTag.appendChild(audioBar)
             // adding classes to these elements
             artworkTag.classList.add('artwork')
             artworkTag.classList.add(`track-${idx}`)
@@ -60,8 +60,24 @@ function updateArtist (name) {
 
 function playMusic(idx, audioUrl, trackName){
     query(`.track-${idx}`).addEventListener('click', function(){
-        query("#audioplayer").innerHTML = `<p class="now-playing">Now Playing: ${trackName}</p><audio controls src="${audioUrl}"></audio>`
-        query("audio").play()
+        let song = query("audio")
+        console.log(song)
+        const audioplayer = query("#audioplayer")
+        console.log(song.getAttribute('src'))
+        console.log(audioUrl)
+        if (song.getAttribute('src') !== audioUrl || query("audio").paused){
+           audioplayer.innerHTML = `<p class="now-playing">Now Playing: ${trackName}</p><audio controls src="${audioUrl}"></audio>`           
+           query("audio").play()
+        }
+        else {
+            query("audio").pause()
+        }
+        
+        // query("#audioplayer").innerHTML = `<p class="now-playing">Now Playing: ${trackName}</p><audio controls src="${audioUrl}"></audio>`
+        // if (!query("audio").paused){
+        //     query("audio").pause()
+        // }    
+        // query("audio").play()
     })
 }
 
