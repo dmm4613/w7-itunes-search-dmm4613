@@ -6,6 +6,16 @@ body {
     background-color: #deefe0;
 }
 
+#audioplayer > audio{
+    display: center;
+    width: 500px;
+    border: 1px solid black;
+}
+
+.now-playing{
+    font-size: 20px;
+    text-transform: capitalize;
+}
 #name{
     margin: 1rem;
     width: 500px;

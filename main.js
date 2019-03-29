@@ -7,13 +7,11 @@ function queryAll(selector){
     return document.querySelectorAll(selector)
 }
 
-
 function searchArtist(input){
-    // searchButton.addEventListener('click', function (event) {
         updateArtist(input)
 }
-    
 
+// initial pull from itunes API to grab the JSON file
 function getArtist(input){
     encodeURIComponent(input)
     let promise = fetch(`https://itunes-api-proxy.glitch.me/search?term=${input}`)
@@ -26,6 +24,7 @@ function getArtist(input){
     return promise
 }
 
+// will populate screen with each song from the searched artist/band name
 function updateArtist (name) {
     getArtist (name)
     .then(function (searchResult){
@@ -41,38 +40,30 @@ function updateArtist (name) {
             const trackItem = document.createElement('div')
             const artworkTag = document.createElement('div')
             const audioBar = document.createElement ('div')
-            const audio = searchResult.results[idx].previewUrl
+            const audioUrl = searchResult.results[idx].previewUrl
             const artworkUrl = searchResult.results[idx].artworkUrl100
-            const song = new Audio(`${audio}`)
-            trackItem.innerText = searchResult.results[idx].trackName
+            const trackName = searchResult.results[idx].trackName
+            trackItem.innerText = trackName
             artworkTag.innerHTML = `<img src="${artworkUrl}">`
             // adding these elements as children **parent.appendchild(child)**
             trackDiv.appendChild(artworkTag)
             artworkTag.appendChild(trackItem)
             artworkTag.appendChild(audioBar)
-            // can probably remove this and make as part of artworkTag
-            audioBar.appendChild(song)
             // adding classes to these elements
             artworkTag.classList.add('artwork')
             artworkTag.classList.add(`track-${idx}`)
             trackItem.classList.add('track')
-            playMusic(idx, song)
+            playMusic(idx, audioUrl, trackName)
         }
     })
 }
 
-function playMusic(idx, song){
+function playMusic(idx, audioUrl, trackName){
     query(`.track-${idx}`).addEventListener('click', function(){
-        console.log(song.paused)
-        if (!song.paused){
-            song.pause()
-        }
-        else{
-            song.play()
-        }
+        query("#audioplayer").innerHTML = `<p class="now-playing">Now Playing: ${trackName}</p><audio controls src="${audioUrl}"></audio>`
+        query("audio").play()
     })
 }
-
 
 document.addEventListener('DOMContentLoaded', function(){
     query('#search-form').addEventListener('submit', function(event){
@@ -80,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function(){
         // don't try to submit this form. Do what I ask instead.
         event.preventDefault()
         searchArtist(artistName.value)
+        // resets the value of artistName so the search bar won't keep that there. 
         artistName.value = ''
-
     })
 })
