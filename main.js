@@ -40,30 +40,39 @@ function updateArtist (name) {
         for (idx = 0; idx < searchResult.results.length; idx++){
             const trackItem = document.createElement('div')
             const artworkTag = document.createElement('div')
-            // const audioDiv = query('#audioplayer')
             const audioBar = document.createElement ('div')
             const audio = searchResult.results[idx].previewUrl
             const artworkUrl = searchResult.results[idx].artworkUrl100
-            audioBar.innerHTML = `<audio
-                                    controls="controls"
-                                    src="${audio}">
-                                        Your browser does not support the
-                                        <code>audio</code> element.
-                                </audio>`
+            const song = new Audio(`${audio}`)
             trackItem.innerText = searchResult.results[idx].trackName
             artworkTag.innerHTML = `<img src="${artworkUrl}">`
             // adding these elements as children **parent.appendchild(child)**
             trackDiv.appendChild(artworkTag)
             artworkTag.appendChild(trackItem)
             artworkTag.appendChild(audioBar)
+            // can probably remove this and make as part of artworkTag
+            audioBar.appendChild(song)
             // adding classes to these elements
             artworkTag.classList.add('artwork')
+            artworkTag.classList.add(`track-${idx}`)
             trackItem.classList.add('track')
-            audioBar.classList.add('audio-player')
-
+            playMusic(idx, song)
         }
     })
 }
+
+function playMusic(idx, song){
+    query(`.track-${idx}`).addEventListener('click', function(){
+        console.log(song.paused)
+        if (!song.paused){
+            song.pause()
+        }
+        else{
+            song.play()
+        }
+    })
+}
+
 
 document.addEventListener('DOMContentLoaded', function(){
     query('#search-form').addEventListener('submit', function(event){

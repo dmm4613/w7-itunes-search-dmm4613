@@ -29,19 +29,11 @@ body {
     font-size: 20px;
 }
 
-
 #artist{
     font-size: 4rem; 
     text-transform: capitalize;
 }
-#track{
-    margin: 0 auto;
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
+
 .artwork{
     margin: 1rem;
     display: block;
@@ -50,7 +42,6 @@ body {
     border-radius: 35px 35px 35px 35px;
     animation: pulse 2.5s infinite;
 }
-
 @keyframes pulse {
   0% {
     background-color: rgb(172, 203, 235);
@@ -72,4 +63,13 @@ body {
     padding: auto;
     
 }
+#track{
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 
