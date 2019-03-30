@@ -26,13 +26,15 @@ body {
 }
 #name{
     margin: 1rem;
-    width: 500px;
+    width: 300px;
+    min-width: 400px;
     height: 30px;
     font-size: 30px;
 }
 
 #searchbar {
     display: flex;
+    min-width: 400px;
     justify-content: center;
     align-items: center;
 }
