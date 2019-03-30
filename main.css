@@ -16,6 +16,14 @@ body {
     font-size: 20px;
     text-transform: capitalize;
 }
+
+.dancing-carlton{
+    height: 200px;
+    width: 200px;
+    background-image: url(https://thumbs.gfycat.com/SadEmptyFinch-max-1mb.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 #name{
     margin: 1rem;
     width: 500px;
