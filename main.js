@@ -14,7 +14,13 @@ function searchArtist(input){
 // initial pull from itunes API to grab the JSON file
 function getArtist(input){
     encodeURIComponent(input)
-    let promise = fetch(`https://itunes-api-proxy.glitch.me/search?term=${input}`)
+    let promise = fetch(`https://itunes-api-proxy.glitch.me/search?term=${input}`, {
+        method: 'POST',
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+    })
     .then(function (response) {
         if (!response.ok) {
         throw Error(response.statusText)
