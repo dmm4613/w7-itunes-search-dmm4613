@@ -15,6 +15,7 @@ function searchArtist(input){
 function getArtist(input){
     encodeURIComponent(input)
     let promise = fetch(`https://itunes-api-proxy.glitch.me/search?term=${input}`, {
+        //this will hopefully fix issues with fetch errors on heroku
         method: 'POST',
       headers: {
         'X-Requested-With': 'XMLHttpRequest',
