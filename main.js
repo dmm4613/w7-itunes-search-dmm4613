@@ -68,18 +68,19 @@ function updateArtist (name) {
 function playMusic(idx, audioUrl, trackName){
     query(`.track-${idx}`).addEventListener('click', function(){
         let song = query("audio")
+        const danceBody = query("body")
         const danceDance = query(".dancer")
         const audioplayer = query("#audioplayer")
         if (song.getAttribute('src') !== audioUrl || query("audio").paused){
             audioplayer.innerHTML = `<p class="now-playing">Now Playing: ${trackName}</p><audio controls src="${audioUrl}"></audio>`           
             query("audio").play()
             danceDance.classList.add('dancing-carlton')
-            console.log(query(".dancing-carlton"))
-            
+            danceBody.classList.add('music-on')
         }
         else {
             query("audio").pause()
             danceDance.classList.remove('dancing-carlton')
+            danceBody.classList.remove('music-on')
         }
     })
 }

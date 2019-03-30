@@ -3,7 +3,21 @@
 body {
     font-family: Roboto, Arial, Helvetica, sans-serif;
     text-align: center;
-    background-color: #deefe0;
+    background-color: silver;
+}
+.music-on {
+    animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0% {
+    background-color: rgb(235, 204, 127);
+  }
+  50% {
+    background-color: rgb(207, 135, 226);
+  }
+  100% {
+    background-color: rgb(235, 204, 127);
+  }
 }
 
 #audioplayer > audio{
@@ -17,9 +31,18 @@ body {
     text-transform: capitalize;
 }
 
+#searchbar {
+    display: flex;
+    flex-flow: column wrap;
+    min-width: 400px;
+    justify-content: center;
+    align-items: center;
+}
 .dancing-carlton{
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: auto;
+    min-width: 150px;
+    display: center;
     background-image: url(https://thumbs.gfycat.com/SadEmptyFinch-max-1mb.gif);
     background-size: contain;
     background-repeat: no-repeat;
@@ -30,16 +53,11 @@ body {
     min-width: 400px;
     height: 30px;
     font-size: 30px;
-}
-
-#searchbar {
-    display: flex;
-    min-width: 400px;
-    justify-content: center;
-    align-items: center;
+    display: center;
 }
 #search-button {
     margin: 0.4rem;
+    display: center;
 }
 .search-button{
     margin: 1rem;
@@ -60,18 +78,7 @@ body {
     height: auto;
     width: 300px;
     border-radius: 35px 35px 35px 35px;
-    animation: pulse 2.5s infinite;
-}
-@keyframes pulse {
-  0% {
-    background-color: rgb(172, 203, 235);
-  }
-  50% {
     background-color: rgb(222,239,224);
-  }
-  100% {
-    background-color: rgb(172, 203, 235);
-  }
 }
 
 .artwork img{
