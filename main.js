@@ -71,7 +71,10 @@ function playMusic(idx, audioUrl, trackName){
         const danceBody = query("body")
         const danceDance = query(".dancer")
         const audioplayer = query("#audioplayer")
-        if (song.getAttribute('src') !== audioUrl || query("audio").paused){
+        if (song.getAttribute('src') === audioUrl && query("audio").paused){
+            query("audio").play()
+        }
+        else if (song.getAttribute('src') !== audioUrl || query("audio").paused){
             audioplayer.innerHTML = `<p class="now-playing">Now Playing: ${trackName}</p><audio controls src="${audioUrl}"></audio>`           
             query("audio").play()
             danceDance.classList.add('dancing-carlton')
@@ -84,7 +87,6 @@ function playMusic(idx, audioUrl, trackName){
         }
     })
 }
-
 document.addEventListener('DOMContentLoaded', function(){
     query('#search-form').addEventListener('submit', function(event){
         const artistName = query('#name')
