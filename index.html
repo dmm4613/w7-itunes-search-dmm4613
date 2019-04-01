@@ -5,32 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>iTunes Search</title>
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="main.css"> 
 </head>
 
-
 <body>
     <div>
-        <h1>Find Your Favorite Artists Here</h1>
+        <h1>Dance Party Starter</h1>
     </div>
-    <div id="audioplayer"> </div>
+    <div id="audioplayer">
+        <p class="now-playing">Now Playing: </p><audio controls src=''></audio>`
+    </div>
     
     <div id="searchbar">
-        <!-- <div><img src="https://thumbs.gfycat.com/SadEmptyFinch-max-1mb.gif"></div>         -->
+        <div class="dancer"></div>        
         <form id="search-form">
             <input id="name" type="text" aria-label="Search Artist or Band" placeholder="Search Artist or Band" autofocus>
             <button id="search-button" class="search-button" type="submit">Search</button>
         </form>
-        <!-- <div><img src="https://thumbs.gfycat.com/SadEmptyFinch-max-1mb.gif"></div> -->
     </div>
-
 
     <div id="artist"></div>
+
     <div id="track">
     </div>
-
-
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script> -->
     <script src="main.js"></script>
 </body>
